@@ -1,0 +1,47 @@
+<div 
+    class="personal-container"
+    fxLayout="column" 
+    fxLayoutAlign="center center">
+    <div fxFill fxLayoutAlign="center center" class="title">
+        <h3>Change Phone Number</h3>
+    </div> 
+    <kendo-stepper
+        #stepper
+        [steps]="steps"
+        [stepType]="'full'"
+        [(currentStep)]="currentStep"
+        [style.width.px]="550">
+    </kendo-stepper>
+    <div fxFill fxLayout="column" fxLayoutAlign="center center">
+        <p *ngIf="currentStep===0 && invalid == true" class="status-box fail">
+            <span class="k-icon k-i-close icon-fail"></span>
+            The phone is invalid.</p>
+    </div>
+
+    <app-phone-form *ngIf="currentStep===0"
+       (phoneSubmitted)="phoneSubmitted($event)"></app-phone-form> 
+   
+    <app-phone-code *ngIf="currentStep===1"
+        [code]="code"
+        (codeSubmitted)="codeSubmitted($event)"></app-phone-code>
+
+    <div *ngIf="currentStep===2" 
+        fxLayout="column" 
+        fxLayoutGap="15px" 
+        class="container" >
+        <p class="done">
+            <span class="k-icon k-i-check-circle icon-success icon-large"></span>
+            Change Request Complete</p> 
+        <div class="address">
+        </div>
+        <div class="note">
+            <p>Please note:</p>
+            <p>This new phone number has been submitted to HR. HR will notify you when your address has been updated on all systems.</p>
+            <p>Thank you,<br>Human Resources</p>
+        </div>
+        <button 
+            kendoButton
+            class="k-primary"
+            [routerLink]="'/personalinfo'">Close</button>
+    </div>
+</div>

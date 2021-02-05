@@ -1,0 +1,62 @@
+<div>
+    <div *ngIf="employee | async as 'empl'"
+        class="container" 
+        fxLayout="column"
+        fxLayoutAlign="top center">
+        
+                    <profile-photo 
+                        class="photo"
+                        fxFlex
+                        [photo]="empl?.photo" 
+                        [width]="340" 
+                        [height]="340"></profile-photo>
+
+        <kendo-card [orientation]="'horizontal'" [width]="'100%'" class="card">
+
+                <kendo-card-body fxLayout="column">
+                    
+                    <div fxLayoutAlign="center center" class="name">
+                        {{ empl.firstname }} {{ empl.lastname }}
+                    </div>
+                    <div fxLayoutAlign="center center" class="jobtitle">
+                        {{ empl.jobtitle }}
+                    </div>
+                    <div fxLayout="column">
+                        <hr kendoCardSeparator>
+                        <div class="info" fxLayoutAlign="space-between center">
+                            <span>ANNIVERSARY</span><span>{{ empl.anniversary | date }}</span>
+                        </div>
+                        <hr kendoCardSeparator>
+                        <div class="info" fxLayoutAlign="space-between center">
+                            <span>BIRTHDAY</span><span>{{ empl.birthday | date }}</span></div>
+                        <hr kendoCardSeparator>
+                        <div class="info" fxLayoutAlign="space-between center">
+                            <span>EMAIL</span>
+                            <span><a [href]="'mailto:'+ empl.email">
+                                    {{ empl.email }}</a></span>
+                        </div>
+                        <hr kendoCardSeparator>
+                        <div class="info" fxLayoutAlign="space-between center">
+                            <span>MOBILE</span>
+                            <span><a [href]="'tel:'+ empl.cellnumber | phone">
+                                    {{empl.cellnumber | phone}}</a></span>
+                        </div>
+                        <hr kendoCardSeparator>
+                        <div class="info" fxLayoutAlign="space-between center">
+                            <span>OFFICE</span><span>{{ empl.office }}</span></div>
+                        <hr kendoCardSeparator>
+                        <div class="info" fxLayoutAlign="space-between center">
+                            <span>DEPARTMENT</span><span>{{ empl.department }}</span></div>
+                        <hr kendoCardSeparator>
+                        <div class="info" fxLayoutAlign="space-between center">
+                            <span>OFFICE EXT</span>
+                            <span>
+                                <a [href]="'tel:'+ (empl.officedid).replace('xxxx',empl.officeext).replace('-','')">
+                                    {{ (empl.officedid).replace('xxxx',empl.officeext).replace('-','').replace('-','') | phone }}
+                                </a></span>
+                        </div>
+                    </div>
+                </kendo-card-body>
+        </kendo-card>
+    </div>
+</div>

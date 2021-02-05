@@ -1,0 +1,40 @@
+<div class="center-page" fxLayout="column" fxLayoutAlign="center center">
+
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div class="title" [style.width]="'600px'" fxLayoutAlign="center center">
+      <h3>My Profile</h3>
+    </div>
+    <p *ngIf="userinfo | async as user">
+      To view your profile as others see it, click
+      <a [routerLink]="['/profile', (user.firstname | lowercase)+'.'+(user.lastname | lowercase)]">public profile</a>.
+    </p>
+  </div>
+  <div fxLayout="row">
+    <app-widget-wrapper
+      [widgetWidth]="width | async"
+      [style.display]="'contents'">
+      <app-profile-widget
+        [userinfo]="userinfo | async"
+      ></app-profile-widget>
+    </app-widget-wrapper>
+
+    <app-widget-wrapper
+      [widgetWidth]="width | async"
+      [style.display]="'contents'">
+      <app-contact-widget
+        [userinfo]="userinfo | async"
+        [address]="address | async"
+      ></app-contact-widget>
+    </app-widget-wrapper>
+
+    <app-widget-wrapper
+      [widgetWidth]="width | async"
+      [style.display]="'contents'">
+      <app-team-widget
+        [supervisor]="supervisor | async"
+        [userinfo]="userinfo | async"
+      ></app-team-widget>
+    </app-widget-wrapper>
+  </div>
+
+</div>

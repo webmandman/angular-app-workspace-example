@@ -1,0 +1,29 @@
+@import '../../../variables.scss';
+
+.container {
+    margin: 0 auto;
+    width:600px;
+    position: relative;
+}
+.info {
+    margin: 15px;
+    font-size: 16px;
+}
+.name {
+    font-size: 35px;
+    margin: 165px 0 10px;
+    font-weight: bold;
+    color:$primary
+}
+.photo{
+    position: absolute;
+    z-index: 10;
+}
+.card {
+    position: relative;
+    margin-top: 180px;
+}
+.jobtitle {
+    font-size: 20px;
+    margin-bottom: 45px;
+}

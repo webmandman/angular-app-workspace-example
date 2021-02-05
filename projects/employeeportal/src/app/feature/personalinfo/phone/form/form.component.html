@@ -1,0 +1,51 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center">
+  <div>
+    <p>Changing your phone number requires sending you a text message to verify the phone number is actually yours. Standard rates apply.</p>
+  </div>
+    <form 
+        fxFill
+        [formGroup]="phoneForm" 
+        (ngSubmit)="submitPhonenumber()" 
+        class="address-form">
+
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between end">
+                <kendo-floatinglabel>
+                    <h4>Phone Number</h4>
+                  <kendo-maskedtextbox
+                      [mask]="phoneNumberMask"
+                      type="text" 
+                      name="phonenumber"
+                      formControlName="phonenumber" 
+                      class="phonenumberField"
+                      #phonenumber>
+                    </kendo-maskedtextbox>
+                </kendo-floatinglabel>
+                <button
+                    kendoButton
+                    type="button"
+                    (click)="cancel()">
+                    Cancel</button>
+                <button 
+                    type="submit" 
+                    kendoButton
+                    class="k-primary"
+                    [disabled]="!phoneForm.valid">Text me the code</button>
+            </div>
+            
+            <div>
+              
+                      <kendo-formerror
+                        *ngIf="controls.phonenumber.touched 
+                            && controls.phonenumber.errors?.required">
+                          {{ requiredMessage }} 
+                      </kendo-formerror>
+                      <kendo-formerror
+                        *ngIf="controls.phonenumber.touched 
+                            && controls.phonenumber.errors?.invalid">
+                          {{ invalidMessage }} 
+                      </kendo-formerror>
+            </div>
+    </form>
+</div>
+

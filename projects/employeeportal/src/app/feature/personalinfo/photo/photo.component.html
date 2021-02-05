@@ -1,0 +1,14 @@
+<div 
+    class="personal-container"
+    fxLayout="column" 
+    fxLayoutAlign="center center">
+    <div fxFill fxLayoutAlign="center center" class="title">
+        <h3>Change Profile Photo</h3>
+    </div>
+
+    <app-image-cropper 
+        [photo]="photo | async"
+        (cropped)="saveCroppedImage($event)" 
+        (cancelled)="cancel()">
+    </app-image-cropper>
+</div>

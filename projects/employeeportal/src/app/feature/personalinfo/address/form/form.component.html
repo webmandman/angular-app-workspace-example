@@ -1,0 +1,72 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center">
+    <form 
+        fxFill
+        [formGroup]="addressForm" 
+        (ngSubmit)="submitAddress()" 
+        class="address-form">
+
+        <div fxLayout="row wrap" fxLayoutAlign="center center" >
+            <div  
+                *ngFor="let fieldinfo of formSchema" 
+                fxFlex="50"
+                fxLayout="column" 
+                >
+                  <kendo-floatinglabel>
+                      <h4>{{fieldinfo.fieldlabel}}</h4>
+                    <input
+                        kendoTextBox                         
+                        fxFill
+                        [type]="fieldinfo.fieldtype" 
+                        [name]="fieldinfo.fieldname"
+                        [formControlName]="fieldinfo.fieldname" 
+                        #fieldinfo.fieldname/>
+                        <kendo-formerror
+                          *ngIf="
+                            controls[fieldinfo.fieldname].touched &&
+                            controls[fieldinfo.fieldname].invalid
+                          ">
+                          <span
+                            *ngIf="controls[fieldinfo.fieldname].hasError('required')"
+                            >{{ fieldinfo.fieldlabel }} is required.</span>
+
+                          <span
+                            *ngIf="controls[fieldinfo.fieldname].hasError('minlength')">
+                            {{ fieldinfo.fieldlabel }} must be at least
+                            {{ controls[fieldinfo.fieldname].errors.minlength.requiredLength }}
+                            characters long.
+                          </span>
+
+                          <span
+                            *ngIf="controls[fieldinfo.fieldname].hasError('maxlength')">
+                            {{ fieldinfo.fieldlabel }} cannot be more than
+                            {{ controls[fieldinfo.fieldname].errors.maxlength.requiredLength }}
+                            characters long.
+                          </span>
+
+                          <span
+                            *ngIf="controls[fieldinfo.fieldname].hasError('pattern')">
+                            {{ fieldinfo.fieldlabel }} is incorrect.
+                          </span>
+                        </kendo-formerror>
+                  </kendo-floatinglabel>
+            </div>
+            <div fxFlexFill 
+                fxLayout="row" 
+                fxLayoutAlign="space-around center"
+                [style.margin]="'40px'">
+                <button
+                    kendoButton
+                    type="button"
+                    (click)="cancel()">
+                    Cancel</button>
+                <button 
+                    type="submit" 
+                    kendoButton
+                    class="k-primary"
+                    [disabled]="!addressForm.valid">
+                    Verify My Address</button>
+            </div>
+        </div>
+    </form>
+</div>
+

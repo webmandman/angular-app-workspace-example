@@ -1,0 +1,12 @@
+
+$shadowoffset: 1px 1px;
+$shadowblur: 5px;
+$shadowspread: 3px;
+
+.photo-container {
+    border-radius: 50%;
+    -moz-box-shadow: $shadowoffset $shadowblur $shadowspread #ccc;
+    -webkit-box-shadow: $shadowoffset $shadowblur $shadowspread #ccc;
+    box-shadow: $shadowoffset $shadowblur $shadowspread #ccc;
+}
+

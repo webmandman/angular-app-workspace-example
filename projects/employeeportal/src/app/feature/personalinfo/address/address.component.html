@@ -1,0 +1,57 @@
+<div
+    class="personal-container"
+    fxLayout="column"
+    fxLayoutAlign="center center">
+    <div fxFill fxLayoutAlign="center center" class="title">
+        <h3>Change Personal Address</h3>
+    </div>
+    <kendo-stepper
+        #stepper
+        [steps]="steps"
+        [stepType]="'full'"
+        [(currentStep)]="currentStep"
+        [style.width.px]="550">
+    </kendo-stepper>
+    <div fxFill fxLayout="column" fxLayoutAlign="center center">
+        <p *ngIf="currentStep===0 && invalid == true" class="status-box fail">
+            <span class="k-icon k-i-close icon-fail"></span>
+            The address is invalid.</p>
+        <p class="valid" *ngIf="currentStep===1" class="status-box success">
+            <span class="k-icon k-i-check-circle icon-success"></span>
+            The address has been verified to be deliverable.</p>
+    </div>
+
+    <address-form *ngIf="currentStep===0"
+        [address]="oldaddress | async"
+        (addressSubmitted)="addressSubmitted($event)">
+    </address-form>
+
+    <app-address-verify *ngIf="currentStep===1"
+        [address]="oldaddress | async"
+        (verified)="nextStep($event)">
+        <address-staticmap
+            [addressLine]="addressLine">
+        </address-staticmap>
+    </app-address-verify>
+
+    <div *ngIf="currentStep===2"
+        fxLayout="column"
+        fxLayoutGap="15px"
+        class="container" >
+        <p class="done">
+            <span class="k-icon k-i-check-circle icon-success icon-large"></span>
+            Change Request Complete</p>
+        <div class="address">
+            {{addressLine}}
+        </div>
+        <div class="note">
+            <p>Please note:</p>
+            <p>This new address has been submitted to HR. HR will notify you when your address has been updated on all systems.</p>
+            <p>Thank you,<br>Human Resources</p>
+        </div>
+        <button
+            kendoButton
+            class="k-primary"
+            [routerLink]="'/personalinfo'">Close</button>
+    </div>
+</div>

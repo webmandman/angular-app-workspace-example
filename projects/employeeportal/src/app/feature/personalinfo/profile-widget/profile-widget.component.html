@@ -1,0 +1,37 @@
+<kendo-card-body>
+    <div fxLayout="row" fxLayoutAlign="space-between">
+        <div fxFlex="85px" class="subject">Name</div>
+        <div fxFlex>{{userinfo?.firstname}} {{userinfo?.lastname}}</div>
+            <profile-photo 
+                [photo]="userinfo?.photo" 
+                [width]="140" 
+                [height]="140"></profile-photo>
+    </div>
+    <div fxLayoutAlign="end end">
+        <button class="k-button" [routerLink]="'/personalinfo/photo'">
+            Change Photo
+        </button>
+    </div>
+</kendo-card-body>
+<hr kendoCardSeparator [orientation]="'horizontal'" />
+<kendo-card-body>
+    <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Birthday</div> 
+        <div>{{userinfo?.birthday | date}}</div>
+    </div>  
+</kendo-card-body>
+<hr kendoCardSeparator [orientation]="'horizontal'" />
+<kendo-card-body>
+    <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Anniversary</div> 
+        <div>{{userinfo?.anniversary | date}}</div>
+    </div>
+</kendo-card-body>
+<hr kendoCardSeparator [orientation]="'horizontal'" />
+<kendo-card-body>
+    <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Password</div> 
+        <div fxFlex>*************</div>
+        <div><button class="k-button" [routerLink]="'/personalinfo/password'">Change</button></div>
+    </div>
+</kendo-card-body>

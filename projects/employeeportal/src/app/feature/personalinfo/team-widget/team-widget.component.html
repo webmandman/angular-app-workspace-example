@@ -1,0 +1,34 @@
+    <kendo-card-body>
+      <div fxLayout="row">
+        <div fxFlex="85px" class="subject">My Job Title</div>
+        <div>{{ userinfo?.jobtitle }}</div>
+      </div>
+    </kendo-card-body>
+    <hr kendoCardSeparator [orientation]="'horizontal'" />
+    <kendo-card-body>
+      <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Supervisor</div>
+        <div>{{ supervisor?.firstname }} {{ supervisor?.lastname }}</div>
+      </div>
+    </kendo-card-body>
+    <hr kendoCardSeparator [orientation]="'horizontal'" />
+    <kendo-card-body> 
+      <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Department</div> 
+        <div>{{ userinfo?.department }}</div> 
+      </div>
+    </kendo-card-body>
+    <hr kendoCardSeparator [orientation]="'horizontal'" />
+    <kendo-card-body> 
+      <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Group</div> 
+        <div>{{ userinfo?.group }}</div> 
+      </div>
+    </kendo-card-body>
+    <hr kendoCardSeparator [orientation]="'horizontal'" />
+    <kendo-card-body> 
+      <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Office</div> 
+        <div>{{ userinfo?.office }}</div> 
+      </div>
+    </kendo-card-body>

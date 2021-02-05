@@ -1,0 +1,34 @@
+<kendo-card-body>
+    <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Email</div> 
+        <div>{{userinfo?.email}}</div>
+    </div>
+</kendo-card-body>
+<hr kendoCardSeparator [orientation]="'horizontal'" />
+<kendo-card-body>
+    <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Mobile Number</div> 
+        <div fxFlex>{{userinfo?.cellnumber | phone}}</div>
+    </div>
+    <div kendoRippleContainer fxLayoutAlign="end end">
+        <button class="k-button" [routerLink]="'/personalinfo/phone'">
+            Request Change
+        </button>
+    </div>
+</kendo-card-body>
+<hr kendoCardSeparator [orientation]="'horizontal'" />
+<kendo-card-body>
+    <div fxLayout="row">
+        <div fxFlex="85px" class="subject">Address</div> 
+        <div fxFlex>
+            {{address?.address}}<br>
+            {{address?.city}} {{address?.state}}<br> 
+            {{address?.zipcode}} 
+        </div>
+    </div>
+    <div kendoRippleContainer fxLayoutAlign="end end">
+        <button class="k-button" [routerLink]="'/personalinfo/address'">
+            Request Change
+        </button>
+    </div>
+</kendo-card-body>

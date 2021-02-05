@@ -1,0 +1,39 @@
+<div
+    fxLayout="column">
+    <div class="address verifyquestion">
+        <p>We have sent you a text message with a code. Please enter the code below.</p>
+        <p>Didn't receive a text message? <a (click)="onCodeFail()">Try again</a>.</p>
+    </div>
+    <form class="k-form"
+        [formGroup]="codeForm">
+        <div 
+            fxLayoutAlign="space-between center"
+            fxLayout="row">
+            
+            
+            <kendo-formfield>
+                <kendo-label [for]="code" text="Code:">
+                    <input
+                        [style.width]="'70%'"
+                        type="text" 
+                        formControlName="code" 
+                        class="codefield"
+                        #code />
+                </kendo-label>
+                <div class="field-error">
+                    <kendo-formerror 
+                        *ngIf="codeFormControl.code.dirty
+                            && codeFormControl.code.errors?.invalid">
+                        {{ invalidMessage }}
+                    </kendo-formerror>
+                </div>
+            </kendo-formfield>
+
+            <button 
+                kendoButton
+                class="k-primary"
+                [routerLink]="'/personalinfo'">Cancel</button>
+
+        </div>
+    </form>
+</div>

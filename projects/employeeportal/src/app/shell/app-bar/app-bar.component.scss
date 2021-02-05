@@ -1,0 +1,10 @@
+@import '../../../variables.scss';
+
+.company-bar {
+    background-color: $primary;
+    height: 64px;
+    padding: 1px;
+}
+.logo {
+    margin: 13px 0 0 8px;
+}

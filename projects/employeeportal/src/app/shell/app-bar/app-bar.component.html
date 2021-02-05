@@ -1,0 +1,21 @@
+<div class="company-bar">
+    <div class="logo">
+        <img src="/images/Logo.jpg" width="170" height="35" alt="Company" />
+    </div>
+</div>
+<kendo-tabstrip (tabSelect)="onTabSelect($event)">
+    <kendo-tabstrip-tab
+        [title]="'Employee Portal'"
+        [disabled]="true">
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab
+        [title]="'Employee Directory'">
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab
+        [title]="'Offices'">
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab
+        [title]="'My Profile'"
+        [selected]="true">
+    </kendo-tabstrip-tab>
+</kendo-tabstrip>

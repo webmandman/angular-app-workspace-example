@@ -1,0 +1,20 @@
+<div
+    fxLayout="column">
+    <div class="address">
+        {{addressLine}}
+    </div>
+    <div class="address verifyquestion">Does your address look correct on the map?</div>
+    <ng-content></ng-content>
+    <div 
+        fxLayout="column">
+        <button 
+            kendoButton
+            type="button"
+            (click)="onVerifyFail()">Nope, not my address!</button>
+        <button 
+            fxFlex
+            kendoButton
+            class="k-primary"
+            (click)="verify()">Yes, that's it!</button>
+    </div>
+</div>
